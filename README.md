@@ -14,22 +14,6 @@ Personal portfolio website showcasing my work as an AI & Full-Stack Developer an
 - Tailwind CSS
 - shadcn/ui
 
-## 📦 Local Development
-
-```sh
-# Clone the repository
-git clone https://github.com/nafisalamkhan/portfolio.git
-
-# Navigate to the project directory
-cd portfolio
-
-# Install dependencies
-npm install
-
-# Start the development server
-npm run dev
-```
-
 ## 🚀 Deployment
 
 This project is configured for automatic deployment to GitHub Pages via GitHub Actions.
