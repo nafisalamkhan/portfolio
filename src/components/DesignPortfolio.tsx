@@ -1,4 +1,5 @@
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, Eye } from 'lucide-react';
+import { MagnificLogo } from '@/components/ui/logos';
 import vintageHotrodImage from '@/assets/vintage-hotrod-design.jpg';
 import bookMockupImage from '@/assets/book-mockup.jpg';
 import neonTextImage from '@/assets/neon-text-effect.png';
@@ -11,123 +12,127 @@ const designs = [
     title: 'Two Hardcover Books Mockup',
     tools: ['Photoshop'],
     image: bookMockupImage,
-    link: 'https://www.freepik.com/premium-psd/two-hardcover-books-mockup_112031370.htm',
+    link: 'https://www.magnific.com/author/nafisalamkhan',
   },
   {
     title: 'Neon Light Editable Text Effect',
     tools: ['Photoshop'],
     image: neonTextImage,
-    link: 'https://www.freepik.com/premium-psd/neon-light-editable-text-effect_129836269.htm',
+    link: 'https://www.magnific.com/author/nafisalamkhan',
   },
   {
     title: 'Van Life Beach T-Shirt Design',
     tools: ['Adobe Illustrator'],
     image: vanlifeTshirtImage,
-    link: 'https://www.freepik.com/premium-vector/free-vector-illustration-t-shirt-design-mini-van-beach_36639473.htm',
+    link: 'https://www.magnific.com/author/nafisalamkhan',
   },
   {
     title: 'Crime Scene Tape Photo',
     tools: ['Photoshop', 'AI'],
     image: crimeSceneImage,
-    link: 'https://www.freepik.com/premium-photo/yellow-sign-that-says-scene-is-built-by-photographer_312542723.htm',
+    link: 'https://www.magnific.com/author/nafisalamkhan',
   },
   {
     title: 'Special Offer Text Effect',
     tools: ['Photoshop'],
     image: specialOfferImage,
-    link: 'https://www.freepik.com/premium-psd/special-offer-text-effect-style-premium-psd_112041874.htm',
+    link: 'https://www.magnific.com/author/nafisalamkhan',
   },
   {
     title: 'Vintage Hotrod T-Shirt Design',
     tools: ['Adobe Illustrator'],
     image: vintageHotrodImage,
-    link: 'https://www.freepik.com/premium-vector/free-vintage-t-shirt-design-hotrod_36639450.htm',
+    link: 'https://www.magnific.com/author/nafisalamkhan',
   },
 ];
 
+const DesignCard = ({ design, index }: { design: typeof designs[0]; index: number }) => {
+  return (
+    <div
+      className="card overflow-hidden group animate-fade-in"
+      style={{ animationDelay: `${index * 0.1}s` }}
+    >
+      {/* Design Preview */}
+      <div className="aspect-[4/3] relative overflow-hidden bg-[var(--muted)]">
+        <img
+          src={design.image}
+          alt={design.title}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        />
+      </div>
+
+      {/* Content */}
+      <div className="p-6 space-y-4">
+        <h3 className="heading-md group-hover:text-[var(--link)] transition-colors">
+          {design.title}
+        </h3>
+
+        {/* Tools */}
+        <div className="flex flex-wrap gap-2">
+          {design.tools.map((tool) => (
+            <span
+              key={tool}
+              className="px-3 py-1 text-xs font-medium bg-[var(--muted)] text-body rounded-[6px] border border-hairline"
+            >
+              {tool}
+            </span>
+          ))}
+        </div>
+
+        {/* CTA */}
+        <a
+          href={design.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 body-md font-[500] text-[var(--link)] hover:text-[var(--link-deep)] transition-colors"
+        >
+          <MagnificLogo className="w-4 h-4" />
+          View on Magnific
+          <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+        </a>
+      </div>
+    </div>
+  );
+};
+
 export const DesignPortfolio = () => {
   return (
-    <section id="designs" className="py-32 relative">
-      {/* Background glow */}
-      <div className="absolute top-1/2 left-1/2 w-[800px] h-[800px] bg-gradient-to-r from-primary/5 to-accent/5 rounded-full blur-[200px] -translate-x-1/2 -translate-y-1/2" />
-
+    <section id="designs" className="py-[96px] lg:py-[128px] relative">
       <div className="section-container relative z-10">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 glass-badge mb-6">
-            <span className="w-2 h-2 bg-white rounded-full" />
-            Creative Work
+        <div className="text-center max-w-3xl mx-auto mb-[48px]">
+          <div className="inline-flex items-center gap-2 bg-[var(--muted)] border border-hairline rounded-[6px] px-4 py-2 mb-6 mx-auto max-w-fit">
+            <span className="w-2 h-2 bg-[var(--gradient-preview-start)] rounded-full" />
+            <span className="label-sm text-ink">Creative Work</span>
           </div>
-          <h2 className="section-title">
-            Creative Design <span className="text-gradient">&amp; Assets</span>
+          <h2 className="heading-lg mb-4">
+            Creative Design <span className="text-gradient">& Assets</span>
           </h2>
-          <p className="section-subtitle mx-auto">
-            Explore my collection of design assets on Freepik with{' '}
-            <span className="text-primary font-medium">150+ assets</span> and{' '}
-            <span className="text-primary font-medium">5,700+ downloads</span>
+          <p className="body-lg text-body mx-auto max-w-xl">
+            Explore my collection of design assets on Magnific with{' '}
+            <span className="text-ink font-[500]">200+ assets</span> and{' '}
+            <span className="text-ink font-[500]">8.3K+ downloads</span>
           </p>
         </div>
 
         {/* Designs Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {designs.map((design, index) => (
-            <div
-              key={design.title}
-              className="group glass-card overflow-hidden gradient-border transition-all duration-500 hover:-translate-y-2 animate-fade-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              {/* Design Preview */}
-              <div className="aspect-[4/3] relative overflow-hidden bg-muted/20">
-                <img
-                  src={design.image}
-                  alt={design.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-
-              {/* Content */}
-              <div className="p-6">
-                <h3 className="font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
-                  {design.title}
-                </h3>
-
-                {/* Tools */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {design.tools.map((tool) => (
-                    <span
-                      key={tool}
-                      className="px-2 py-1 text-xs bg-muted/50 text-muted-foreground rounded-md"
-                    >
-                      {tool}
-                    </span>
-                  ))}
-                </div>
-
-                {/* CTA */}
-                <a
-                  href={design.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
-                >
-                  View on Freepik
-                  <ExternalLink size={14} />
-                </a>
-              </div>
-            </div>
+            <DesignCard key={design.title} design={design} index={index} />
           ))}
         </div>
 
         {/* View All CTA */}
-        <div className="text-center mt-12">
+        <div className="text-center mt-[48px]">
           <a
-            href="https://www.freepik.com/author/nafisalamkhan"
+            href="https://www.magnific.com/author/nafisalamkhan"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-8 py-4 glass-button font-medium group"
+            className="btn-secondary inline-flex items-center gap-2"
           >
-            View All Assets on Freepik
-            <ExternalLink size={18} className="group-hover:translate-x-1 transition-transform" />
+            <MagnificLogo className="w-5 h-5" />
+            View All Assets on Magnific
+            <ExternalLink className="w-4 h-4" />
           </a>
         </div>
       </div>

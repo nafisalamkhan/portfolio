@@ -1,69 +1,59 @@
-import { Mail, ExternalLink } from 'lucide-react';
+import { Mail, ExternalLink, Send, Github, Linkedin } from 'lucide-react';
 
 const socialLinks = [
-  {
-    name: 'Email',
-    href: 'mailto:nafis.alam010@gmail.com',
-    label: 'nafis.alam010@gmail.com',
-    logo: 'https://www.gstatic.com/images/branding/product/1x/gmail_2020q4_48dp.png',
-  },
   {
     name: 'LinkedIn',
     href: 'https://www.linkedin.com/in/nafisalamkhan',
     label: 'Connect on LinkedIn',
-    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg',
+    icon: Linkedin,
   },
   {
     name: 'GitHub',
     href: 'https://github.com/nafisalamkhan',
     label: 'View GitHub Profile',
-    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
+    icon: Github,
   },
 ];
 
 export const Contact = () => {
   return (
-    <section id="contact" className="py-24 relative">
+    <section id="contact" className="py-[96px] lg:py-[128px] relative">
       <div className="section-container relative z-10">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 glass-badge mb-6">
-              <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse shadow-[0_0_8px_2px_rgba(34,197,94,0.6)]" />
-              Get In Touch
+          <div className="text-center mb-[48px]">
+            <div className="inline-flex items-center gap-2 bg-[var(--muted)] border border-hairline rounded-[6px] px-4 py-2 mb-6 mx-auto max-w-fit">
+              <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+              <span className="label-sm text-ink">Get In Touch</span>
             </div>
-            <h2 className="section-title">
-              Let's Connect
+            <h2 className="heading-lg mb-4">
+              Let&apos;s Connect
             </h2>
-            <p className="section-subtitle mx-auto">
-              I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+            <p className="body-lg text-body mx-auto max-w-xl">
+              I&apos;m always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
             </p>
           </div>
 
-          {/* Contact Cards */}
-          <div className="grid sm:grid-cols-3 gap-6 mb-16">
+          {/* Social Links */}
+          <div className="flex justify-center gap-6 mb-[48px]">
             {socialLinks.map((link, index) => (
               <a
                 key={link.name}
                 href={link.href}
-                target={link.name !== 'Email' ? '_blank' : undefined}
-                rel={link.name !== 'Email' ? 'noopener noreferrer' : undefined}
-                className="group glass-card p-6 text-center transition-all duration-300 hover:bg-white/[0.05] animate-fade-in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="card-hover p-4 text-center group animate-fade-in min-w-[160px]"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-white/5 flex items-center justify-center group-hover:bg-white/10 transition-all duration-300">
-                  <img
-                    src={link.logo}
-                    alt={link.name}
-                    className={`w-7 h-7 ${link.name === 'GitHub' ? 'invert' : ''}`}
-                  />
+                <div className="w-12 h-12 mx-auto mb-3 rounded-[12px] bg-[var(--muted)] flex items-center justify-center group-hover:bg-[var(--hairline-soft)] transition-colors">
+                  <link.icon className="w-6 h-6 text-[var(--mute)] group-hover:text-ink transition-colors" />
                 </div>
-                <h3 className="font-semibold text-foreground mb-2 group-hover:text-white transition-colors">
+                <h3 className="font-[600] text-[16px] leading-[24px] text-ink mb-1 group-hover:text-[var(--link)] transition-colors">
                   {link.name}
                 </h3>
-                <p className="text-sm text-muted-foreground flex items-center justify-center gap-1">
+                <p className="body-sm text-[var(--mute)] flex items-center justify-center gap-1">
                   {link.label}
-                  {link.name !== 'Email' && <ExternalLink size={12} />}
+                  <ExternalLink className="w-3.5 h-3.5" />
                 </p>
               </a>
             ))}
@@ -71,19 +61,21 @@ export const Contact = () => {
 
           {/* CTA */}
           <div className="text-center">
-            <div className="glass-card p-8 inline-block">
-              <p className="text-muted-foreground mb-4">
+            <div className="card p-8 inline-block max-w-md w-full">
+              <p className="body-lg text-body mb-6">
                 Interested in working together?
               </p>
               <a
                 href="mailto:nafis.alam010@gmail.com"
-                className="inline-flex items-center gap-3 px-6 py-3 rounded-lg 
-                           bg-foreground text-background font-medium 
-                           transition-all duration-300 hover:bg-white/90"
+                className="btn-primary inline-flex items-center gap-3 w-full justify-center"
               >
-                <Mail size={18} />
+                <Mail className="w-5 h-5" />
                 Send me an email
+                <Send className="w-5 h-5" />
               </a>
+              <p className="body-sm text-[var(--mute)] mt-4">
+                nafis.alam010@gmail.com
+              </p>
             </div>
           </div>
         </div>

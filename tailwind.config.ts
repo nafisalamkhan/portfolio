@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import tailwindcssAnimate from "tailwindcss-animate";
 
 export default {
   darkMode: ["class"],
@@ -57,28 +58,35 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // Custom Vercel-style colors
+        ink: "hsl(var(--ink))",
+        body: "hsl(var(--body))",
+        mute: "hsl(var(--mute))",
+        faint: "hsl(var(--faint))",
+        hairline: "hsl(var(--hairline))",
+        "hairline-soft": "hsl(var(--hairline-soft))",
+        canvas: "hsl(var(--canvas))",
+        "canvas-elevated": "hsl(var(--canvas-elevated))",
+        link: "hsl(var(--link))",
+        "link-deep": "hsl(var(--link-deep))",
+        "link-soft": "hsl(var(--link-soft))",
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        "pill": "var(--radius-pill)",
+        "pill-category": "var(--radius-pill-category)",
+        "full": "var(--radius-full)",
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
       },
       animation: {
@@ -87,5 +95,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [tailwindcssAnimate],
 } satisfies Config;
